@@ -17,6 +17,18 @@
       "aliases": {
         "emulator": "0xf8d6e0586b0a20c7"
       }
+    },
+    "TopShotLocking": {
+      "source": "./cadence/contracts/TopShotLocking.cdc",
+      "aliases": {
+        "emulator": "0xf8d6e0586b0a20c7"
+      }
+    },
+    "TopShot": {
+      "source": "./cadence/contracts/TopShot.cdc",
+      "aliases": {
+        "emulator": "0xf8d6e0586b0a20c7"
+      }
     }
   },
 	"networks": {
@@ -53,7 +65,10 @@
 	"deployments": {
     "emulator": {
       "emulator-account": [
-        "NonFungibleToken"
+        "NonFungibleToken",
+        "MetadataViews",
+        "TopShotLocking",
+        "TopShot"
       ]
     }
   }
