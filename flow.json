@@ -7,13 +7,13 @@
 	},
 	"contracts": {
 		"NonFungibleToken": {
-			"source": "./cadence/contracts/NonFungibleToken.cdc",
+			"source": "./cadence/contracts/core/NonFungibleToken.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
 		},
 		"MetadataViews": {
-			"source": "./cadence/contracts/MetadataViews.cdc",
+			"source": "./cadence/contracts/core/MetadataViews.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
@@ -30,7 +30,7 @@
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
 		},
-		"MarketTopShot": {
+		"Market": {
 			"source": "./cadence/contracts/MarketTopShotOldVersion.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
@@ -75,7 +75,7 @@
 				"MetadataViews",
 				"TopShotLocking",
 				"TopShot",
-				"MarketTopShot"
+				"Market"
 			]
 		}
 	}

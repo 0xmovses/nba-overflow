@@ -32,7 +32,7 @@
     deposited to.
 */
 
-import FungibleToken from 0xf8d6e0586b0a20c7
+import FungibleToken from 0xee82856bf20e2aa6
 import FlowToken from 0x0ae53cb6e3f42a79
 import NonFungibleToken from 0xf8d6e0586b0a20c7
 import TopShot from 0xf8d6e0586b0a20c7
@@ -60,7 +60,7 @@ pub contract Market {
     // to allow others to access their sale
     pub resource interface SalePublic {
         pub var cutPercentage: UFix64
-        pub fun purchase(tokenID: UInt64, buyTokens: @DapperUtilityCoin.Vault): @TopShot.NFT {
+        pub fun purchase(tokenID: UInt64, buyTokens: @FlowToken.Vault): @TopShot.NFT {
             post {
                 result.id == tokenID: "The ID of the withdrawn token must be the same as the requested ID"
             }
@@ -163,7 +163,7 @@ pub contract Market {
 
         // purchase lets a user send tokens to purchase an NFT that is for sale
         // the purchased NFT is returned to the transaction context that called it
-        pub fun purchase(tokenID: UInt64, buyTokens: @DapperUtilityCoin.Vault): @TopShot.NFT {
+        pub fun purchase(tokenID: UInt64, buyTokens: @FlowToken.Vault): @TopShot.NFT {
             pre {
                 self.forSale.ownedNFTs[tokenID] != nil && self.prices[tokenID] != nil:
                     "No token matching this ID for sale!"
@@ -224,7 +224,7 @@ pub contract Market {
         // changeBeneficiaryReceiver updates the capability for the beneficiary of the cut of the sale
         pub fun changeBeneficiaryReceiver(_ newBeneficiaryCapability: Capability) {
             pre {
-                newBeneficiaryCapability.borrow<&DapperUtilityCoin.Vault{FungibleToken.Receiver}>() != nil:
+                newBeneficiaryCapability.borrow<&FlowToken.Vault{FungibleToken.Receiver}>() != nil:
                     "Beneficiary's Receiver Capability is invalid!"
             }
             self.beneficiaryCapability = newBeneficiaryCapability
