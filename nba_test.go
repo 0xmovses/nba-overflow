@@ -24,7 +24,7 @@ func TestNBA(t *testing.T) {
 	)
 
 	t.Run("set ids should not be nil after create set", func(t *testing.T) {
-		ids := o.Script("get_setIDs_ny_name", WithArg("setName", "test-set"))
+		ids := o.Script("sets/get_setIDs_ny_name", WithArg("setName", "test-set"))
 		fmt.Printf("%v\n", ids)
 
 		assert.NotNil(t, ids)
