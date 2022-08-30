@@ -7,31 +7,31 @@
 	},
 	"contracts": {
 		"NonFungibleToken": {
-			"source": "./cadence/contracts/core/NonFungibleToken.cdc",
+			"source": "./contracts/core/NonFungibleToken.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
 		},
 		"MetadataViews": {
-			"source": "./cadence/contracts/core/MetadataViews.cdc",
+			"source": "./contracts/core/MetadataViews.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
 		},
 		"TopShotLocking": {
-			"source": "./cadence/contracts/TopShotLocking.cdc",
+			"source": "./contracts/TopShotLocking.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
 		},
 		"TopShot": {
-			"source": "./cadence/contracts/TopShot.cdc",
+			"source": "./contracts/TopShot.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
 		},
 		"Market": {
-			"source": "./cadence/contracts/MarketTopShotOldVersion.cdc",
+			"source": "./contracts/MarketTopShotOldVersion.cdc",
 			"aliases": {
 				"emulator": "0xf8d6e0586b0a20c7"
 			}
