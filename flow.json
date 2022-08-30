@@ -29,7 +29,13 @@
       "aliases": {
         "emulator": "0xf8d6e0586b0a20c7"
       }
-    }
+    },
+    "MarketTopShot": {
+      "source": "./cadence/contracts/MarketTopShotOldVersion.cdc",
+      "aliases": {
+        "emulator": "0xf8d6e0586b0a20c7"
+      }
+    },
   },
 	"networks": {
 		"emulator": "127.0.0.1:3569",
@@ -68,7 +74,8 @@
         "NonFungibleToken",
         "MetadataViews",
         "TopShotLocking",
-        "TopShot"
+        "TopShot",
+        "MarketTopShot"
       ]
     }
   }
