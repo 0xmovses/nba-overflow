@@ -1,4 +1,4 @@
-import TopShot from 0xTOPSHOTADDRESS
+import TopShot from 0xf8d6e0586b0a20c7 
 
 // This script returns an array of the setIDs
 // that have the specified name

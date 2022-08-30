@@ -5,13 +5,28 @@ import (
 	"testing"
 
 	. "github.com/bjartek/overflow"
-	"gotest.tools/assert"
+	"github.com/zeebo/assert"
 )
 
-func testNBA(t *testing.T) {
+func TestNBA(t *testing.T) {
+	fmt.Println("Hello, overflow!")
 	o, err := OverflowTesting()
-	assert.NilError(t, err)
+	fmt.Println("called overflow!")
+	assert.NoError(t, err)
 
-	fmt.Printf("NBA: %v", o)
-	assert.Equal(t, 1, 1)
+	if err != nil {
+		fmt.Printf("Error: %s\n", err)
+		t.Error(err)
+	}
+
+	o.TxFileNameFN("create_set", WithSignerServiceAccount(),
+		WithArgs("setName", "test-set"),
+	)
+
+	t.Run("set ids should not be nil after create set", func(t *testing.T) {
+		ids := o.Script("get_setIDs_ny_name", WithArg("setName", "test-set"))
+		fmt.Printf("%v\n", ids)
+
+		assert.NotNil(t, ids)
+	})
 }

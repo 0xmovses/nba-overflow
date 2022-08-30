@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/bjartek/overflow v1.0.0-rc9995
-	gotest.tools v2.2.0+incompatible
+	github.com/zeebo/assert v1.1.0
 )
 
 require (
