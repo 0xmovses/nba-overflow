@@ -35,7 +35,6 @@ func TestNBAMint(t *testing.T) {
 	setId, _ := o.Script("sets/get_nextSetId").GetAsInterface()
 	assert.NotNil(t, setId)
 
-	//convert type of playId to uint64
 	playIdUint := playId.(uint32)
 	playIdUint -= 1
 
@@ -55,4 +54,18 @@ func TestNBAMint(t *testing.T) {
 		WithArgs("recipientAddr", "account"),
 	).AssertSuccess(t).Print()
 
+	nftMetaData, err := o.Script("get_nft_metadata", WithSignerServiceAccount(),
+		WithArgs("address", "account"),
+		WithArgs("id", "1"),
+	).GetAsInterface()
+	assert.NoError(t, err)
+
+	fmt.Printf("NFT Metadata: %+v \n", nftMetaData)
+
+	setData, err := o.Script("sets/get_set_data", WithSignerServiceAccount(),
+		WithArgs("setID", setIdUint),
+	).GetAsInterface()
+	assert.NoError(t, err)
+
+	fmt.Printf("Set Data: %+v \n", setData)
 }
