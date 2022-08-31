@@ -1,4 +1,4 @@
-import TopShot from 0xTOPSHOTADDRESS
+import TopShot from 0xf8d6e0586b0a20c7
 
 // This transaction is what an admin would use to mint a single new moment
 // and deposit it in a user's collection

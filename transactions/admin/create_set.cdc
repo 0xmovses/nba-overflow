@@ -1,4 +1,4 @@
-import TopShot from 0xTOPSHOTADDRESS
+import TopShot from 0xf8d6e0586b0a20c7
 
 // This transaction is for the admin to create a new set resource
 // and store it in the top shot smart contract

@@ -1,4 +1,4 @@
-import TopShot from 0xTOPSHOTADDRESS
+import TopShot from 0xf8d6e0586b0a20c7 
 
 // This transaction creates a new play struct 
 // and stores it in the Top Shot smart contract

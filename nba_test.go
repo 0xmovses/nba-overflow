@@ -8,10 +8,8 @@ import (
 	"github.com/zeebo/assert"
 )
 
-func TestNBA(t *testing.T) {
-	fmt.Println("Hello, overflow!")
+func TestNBAMint(t *testing.T) {
 	o, err := OverflowTesting()
-	fmt.Println("called overflow!")
 	assert.NoError(t, err)
 
 	if err != nil {
@@ -19,14 +17,42 @@ func TestNBA(t *testing.T) {
 		t.Error(err)
 	}
 
-	o.TxFileNameFN("create_set", WithSignerServiceAccount(),
-		WithArgs("setName", "test-set"),
-	)
+	metaData := map[string]string{
+		"type": "SlamDunk",
+	}
 
-	t.Run("set ids should not be nil after create set", func(t *testing.T) {
-		ids := o.Script("sets/get_setIDs_by_name", WithArg("setName", "test-set"))
-		fmt.Printf("%v\n", ids)
+	o.Tx("admin/create_play", WithSignerServiceAccount(),
+		WithArgs("metadata", metaData),
+	).AssertSuccess(t)
 
-		assert.NotNil(t, ids)
-	})
+	o.Tx("admin/create_set", WithSignerServiceAccount(),
+		WithArgs("setName", "Overflow"),
+	).AssertSuccess(t)
+
+	playId, _ := o.Script("plays/get_nextPlayId").GetAsInterface()
+	assert.NotNil(t, playId)
+
+	setId, _ := o.Script("sets/get_nextSetId").GetAsInterface()
+	assert.NotNil(t, setId)
+
+	//convert type of playId to uint64
+	playIdUint := playId.(uint32)
+	playIdUint -= 1
+
+	setIdUint := setId.(uint32)
+	setIdUint -= 1
+
+	fmt.Printf("PlayId: %v, SetId: %v \n", playIdUint, setIdUint)
+
+	o.Tx("admin/add_play_to_set", WithSignerServiceAccount(),
+		WithArgs("setID", setIdUint),
+		WithArgs("playID", playIdUint),
+	).AssertSuccess(t).Print()
+
+	o.Tx("admin/mint_moment", WithSignerServiceAccount(),
+		WithArgs("setID", setIdUint),
+		WithArgs("playID", playIdUint),
+		WithArgs("recipientAddr", "account"),
+	).AssertSuccess(t).Print()
+
 }
