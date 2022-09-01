@@ -67,5 +67,12 @@ func TestNBAMint(t *testing.T) {
 	).GetAsInterface()
 	assert.NoError(t, err)
 
+	topshotData, err := o.Script("get_topshot_metadata", WithSignerServiceAccount(),
+		WithArgs("address", "account"),
+		WithArgs("id", "1"),
+	).GetAsInterface()
+	assert.NoError(t, err)
+
+	fmt.Printf("Topshot Metadata: %+v \n", topshotData)
 	fmt.Printf("Set Data: %+v \n", setData)
 }
